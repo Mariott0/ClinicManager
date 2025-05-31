@@ -1,0 +1,60 @@
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="border rounded p-4 bg-white shadow-sm">
+        <h4 class="text-center mb-4">Cadastro de Paciente</h4>
+
+        <form (ngSubmit)="salvar()">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nome"
+              name="nome"
+              [(ngModel)]="paciente.nome" />
+          </div>
+
+          <div class="mb-3">
+            <label for="idade" class="form-label">Idade:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="idade"
+              name="idade"
+              [(ngModel)]="paciente.idade" />
+          </div>
+
+          <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone:</label>
+            <input
+              placeholder="(00) 00000-0000"
+              type="text"
+              class="form-control"
+              id="telefone"
+              name="telefone"
+              [(ngModel)]="paciente.telefone"
+              mask="(00) 00000-0000"
+              [dropSpecialCharacters]="false" />
+          </div>
+
+          <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="endereco"
+              name="endereco"
+              [(ngModel)]="paciente.endereco" />
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline-success">Salvar</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

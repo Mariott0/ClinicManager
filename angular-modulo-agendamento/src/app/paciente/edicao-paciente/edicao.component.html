@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="border rounded p-4 bg-white shadow-sm">
+        <h4 class="text-center mb-4">Editar Paciente</h4>
+
+        <form (ngSubmit)="salvar()">
+          <div class="mb-3">
+            <label for="inputNome4" class="form-label">Nome:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputNome4"
+              name="nome"
+              [(ngModel)]="paciente.nome"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="inputIdade" class="form-label">Idade</label>
+            <input
+              type="number"
+              class="form-control"
+              id="inputIdade"
+              name="idade"
+              [(ngModel)]="paciente.idade"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="inputTelefone" class="form-label">Telefone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputTelefone"
+              name="telefone"
+              [(ngModel)]="paciente.telefone"
+              mask="(00) 00000-0000"
+              [dropSpecialCharacters]="false"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="inputEndereco" class="form-label">Endereço</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputEndereco"
+              name="endereco"
+              [(ngModel)]="paciente.endereco"
+            />
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline-success">
+              Salvar
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="deletar()"
+            >
+              Deletar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
