@@ -5,63 +5,46 @@
         <h4 class="text-center mb-4">Editar Paciente</h4>
 
         <form (ngSubmit)="salvar()">
+          <!-- Nome -->
           <div class="mb-3">
             <label for="inputNome4" class="form-label">Nome:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputNome4"
-              name="nome"
-              [(ngModel)]="paciente.nome"
-            />
+            <input type="text" class="form-control" id="inputNome4" name="nome" [(ngModel)]="paciente.nome" />
           </div>
 
+          <!-- Idade -->
           <div class="mb-3">
             <label for="inputIdade" class="form-label">Idade</label>
-            <input
-              type="number"
-              class="form-control"
-              id="inputIdade"
-              name="idade"
-              [(ngModel)]="paciente.idade"
-            />
+            <input type="number" class="form-control" id="inputIdade" name="idade" [(ngModel)]="paciente.idade" />
           </div>
 
+          <!-- CPF -->
+          <div class="mb-3">
+            <label for="inputCpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="inputCpf" name="cpf" [(ngModel)]="paciente.cpf" placeholder="000.000.000-00" />
+          </div>
+
+          <!-- Telefone -->
           <div class="mb-3">
             <label for="inputTelefone" class="form-label">Telefone</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputTelefone"
-              name="telefone"
-              [(ngModel)]="paciente.telefone"
-              mask="(00) 00000-0000"
-              [dropSpecialCharacters]="false"
-            />
+            <input type="text" class="form-control" id="inputTelefone" name="telefone" [(ngModel)]="paciente.telefone" placeholder="(00) 00000-0000" />
           </div>
 
+          <!-- Endereço -->
           <div class="mb-3">
             <label for="inputEndereco" class="form-label">Endereço</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputEndereco"
-              name="endereco"
-              [(ngModel)]="paciente.endereco"
-            />
+            <input type="text" class="form-control" id="inputEndereco" name="endereco" [(ngModel)]="paciente.endereco" />
           </div>
 
+          <!-- Convênio -->
+          <div class="mb-3">
+            <label for="inputConvenio" class="form-label">Convênio</label>
+            <input type="text" class="form-control" id="inputConvenio" name="convenio" [(ngModel)]="paciente.convenio" />
+          </div>
+
+          <!-- Botões -->
           <div class="text-center">
-            <button type="submit" class="btn btn-outline-success">
-              Salvar
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-danger"
-              (click)="deletar()"
-            >
-              Deletar
-            </button>
+            <button type="submit" class="btn btn-outline-success">Salvar</button>
+            <button type="button" class="btn btn-outline-danger" (click)="deletar()">Deletar</button>
           </div>
         </form>
       </div>

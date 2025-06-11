@@ -23,7 +23,7 @@ export class CadastroProfissionalComponent {
     crm_cro: '',
     email: '',
     clinica: ''
-       
+
   };
 
   constructor(
@@ -33,7 +33,7 @@ export class CadastroProfissionalComponent {
 
   salvar() {
     this.profissionalSevice.cadastrarProfissional(this.profissional).subscribe(() => {
-      this.router.navigate(['/listagem-profissional'])
+      this.router.navigate(['/profissionais']);
 
     })
   }

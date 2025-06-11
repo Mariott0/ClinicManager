@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PacientesService } from '../pacientes.service';
 import { Paciente } from '../paciente.model';
-import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-edicao-paciente',
-  imports: [CommonModule, FormsModule,NgxMaskDirective],
+  imports: [CommonModule, FormsModule],
   templateUrl: './edicao.component.html',
   styleUrl: './edicao.component.css',
 })
@@ -20,7 +19,7 @@ export class EdicaoPacienteComponent implements OnInit {
     cpf: '',
     telefone: '',
     endereco: '',
-    convenio: '',  
+    convenio: '',
   };
   private id!: string;
 
@@ -28,14 +27,14 @@ export class EdicaoPacienteComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private paacienteService: PacientesService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.id = String(this.route.snapshot.paramMap.get('id'));
     this.carregarPaciente();
   }
   carregarPaciente(): void {
     if (!this.id) {
-      this.router.navigate(['/listagem-paciente']);
+      this.router.navigate(['/pacientes']);
       return;
     }
     this.paacienteService.buscarPacientes(this.id).subscribe((a) => {
@@ -47,15 +46,15 @@ export class EdicaoPacienteComponent implements OnInit {
     this.paacienteService
       .atualizarPacientes(this.id, this.paciente)
       .subscribe(() => {
-        this.router.navigate(['/listagem-paciente']);
+        this.router.navigate(['/pacientes']);
       });
   }
 
-   deletar(): void {
+  deletar(): void {
     if (confirm('Tem certeza que deseja excluir este Paciente?')) {
-      this.paacienteService.deletarPaciente  (this.id).subscribe(() => {
-        this.router.navigate(['/listagem-paciente']);
-      });
-    }
-  }
+      this.paacienteService.deletarPaciente(this.id).subscribe(() => {
+        this.router.navigate(['/pacientes']);
+      });
+    }
+  }
 }

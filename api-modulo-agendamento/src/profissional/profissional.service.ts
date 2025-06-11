@@ -6,7 +6,7 @@ import { PrismaService } from 'prisma/prisma.service';
 
 @Injectable()
 export class ProfissionalService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   private mapToEntity(profissional: any): Profissional {
     return {
@@ -25,7 +25,6 @@ export class ProfissionalService {
   async create(createProfissionalDto: CreateProfissionalDto): Promise<Profissional> {
     const profissional = await this.prisma.profissional.create({
       data: {
-        id: createProfissionalDto.id,
         nome: createProfissionalDto.nome,
         telefone: createProfissionalDto.telefone,
         idade: createProfissionalDto.idade,

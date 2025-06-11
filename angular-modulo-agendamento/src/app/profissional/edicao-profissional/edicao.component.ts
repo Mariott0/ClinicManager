@@ -40,7 +40,7 @@ export class EdicaoProfissionalComponent implements OnInit {
 
   carregarProfissional(): void {
     if (!this.id) {
-      this.router.navigate(['/listagem-profissional']);
+      this.router.navigate(['/profissionais']);
       return;
     }
 
@@ -53,14 +53,14 @@ export class EdicaoProfissionalComponent implements OnInit {
     if (!this.profissional) return;
 
     this.profissionalService.atualizarProfissional(this.id, this.profissional).subscribe(() => {
-      this.router.navigate(['/listagem-profissional']);
+      this.router.navigate(['/profissionais']);
     });
   }
 
   excluir(): void {
     if (confirm('Tem certeza que deseja excluir este profissional?')) {
       this.profissionalService.excluirProfissional(this.id).subscribe(() => {
-        this.router.navigate(['/listagem-profissional']);
+        this.router.navigate(['/profissionais']);
       });
     }
   }

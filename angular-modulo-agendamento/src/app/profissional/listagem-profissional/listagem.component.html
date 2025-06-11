@@ -3,8 +3,11 @@
         <div>
             <h2 class="fw-bold mb-2">Profissionais Cadastrados</h2>
             <p class="text-muted">Gerencie seus profissionais cadastrados com facilidade.</p>
+            <a class="btn btn-success px-4 py-2 mt-2 mt-md-0" routerLink="/home">
+                Voltar
+            </a>
         </div>
-        <a class="btn btn-success px-4 py-2 mt-2 mt-md-0" routerLink="/cadastro">
+        <a class="btn btn-success px-4 py-2 mt-2 mt-md-0" routerLink="/cadastroProfissional">
             <i class="bi bi-person-plus me-2"></i>Novo Cadastro
         </a>
     </div>
@@ -22,14 +25,23 @@
                         <th (click)="ordenarPor('idade')" style="cursor:pointer">
                             Idade <i [class]="iconeOrdenacao('idade')"></i>
                         </th>
-                        <th (click)="ordenarPor('telefone')" style="cursor:pointer">
-                            Telefone <i [class]="iconeOrdenacao('telefone')"></i>
+                        <th>
+                            Telefone <i></i>
                         </th>
                         <th (click)="ordenarPor('especialidade')" style="cursor:pointer">
                             Especialidade <i [class]="iconeOrdenacao('especialidade')"></i>
                         </th>
-                        <th (click)="ordenarPor('endereco')" style="cursor:pointer">
-                            Endereço <i [class]="iconeOrdenacao('endereco')"></i>
+                        <th>
+                            Endereço <i></i>
+                        </th>
+                        <th>
+                            E-mail <i></i>
+                        </th>
+                        <th>
+                            CRM/CRO <i></i>
+                        </th>
+                        <th>
+                            Clinica <i></i>
                         </th>
                         <th>Ações</th>
                     </tr>
@@ -43,8 +55,12 @@
                         <td>{{ profissional.telefone }}</td>
                         <td>{{ profissional.especialidade }}</td>
                         <td>{{ profissional.endereco }}</td>
+                        <td>{{ profissional.email }}</td>
+                        <td>{{ profissional.crm_cro }}</td>
+                        <td>{{ profissional.clinica }}</td>
                         <td>
-                            <a class="btn btn-outline-primary btn-sm" [routerLink]="['/edicao', profissional.id]">
+                            <a class="btn btn-outline-primary btn-sm"
+                                [routerLink]="['/edicaoProfissional', profissional.id]">
                                 <i class="bi bi-pencil"></i> Editar
                             </a>
                         </td>
@@ -64,9 +80,14 @@
                         <p class="mb-1"><strong>ID:</strong> {{ profissional.id }}</p>
                         <p class="mb-1"><strong>Idade:</strong> {{ profissional.idade }}</p>
                         <p class="mb-1"><strong>Telefone:</strong> {{ profissional.telefone }}</p>
+                        <p class="mb-1"><strong>Email:</strong> {{ profissional.email }}</p>
                         <p class="mb-1"><strong>Especialidade:</strong> {{ profissional.especialidade }}</p>
+                        <p class="mb-1"><strong>CRM/CRO:</strong> {{ profissional.crm_cro }}</p>
+                        <p class="mb-1"><strong>Clínica:</strong> {{ profissional.clinica }}</p>
                         <p class="mb-3"><strong>Endereço:</strong> {{ profissional.endereco }}</p>
-                        <a class="btn btn-sm btn-outline-primary w-100" [routerLink]="['/edicao-profissional', profissional.id]">
+
+                        <a class="btn btn-sm btn-outline-primary w-100"
+                            [routerLink]="['/edicaoProfissional', profissional.id]">
                             <i class="bi bi-pencil"></i> Editar
                         </a>
                     </div>

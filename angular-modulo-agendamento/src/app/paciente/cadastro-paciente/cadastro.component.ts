@@ -4,15 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { Paciente } from '../paciente.model';
 import { PacientesService } from '../pacientes.service';
 import { Router } from '@angular/router';
-import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro-paciente',
   standalone: true,
-  imports: [CommonModule,FormsModule,NgxMaskDirective],
+  imports: [CommonModule, FormsModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
-  
+
 })
 export class CadastroPacienteComponent {
 
@@ -23,16 +22,16 @@ export class CadastroPacienteComponent {
     cpf: '',
     telefone: '',
     endereco: '',
-    convenio: '',    
+    convenio: '',
   };
   constructor(
-    private pacienteService :PacientesService,
-    private router : Router
-  ){}
+    private pacienteService: PacientesService,
+    private router: Router
+  ) { }
 
-  salvar (){
-    this.pacienteService.cadastrarPacientes(this.paciente).subscribe(()=>{
-      this.router.navigate(['/listagem-paciente'])
+  salvar() {
+    this.pacienteService.cadastrarPacientes(this.paciente).subscribe(() => {
+      this.router.navigate(['/pacientes'])
     })
   }
 }

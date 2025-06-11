@@ -1,32 +1,23 @@
 <div class="consulta-container">
   <h2>Agendar Consulta</h2>
+  
 
   <form (ngSubmit)="agendarConsulta()" #consultaForm="ngForm">
     <label for="paciente">Paciente:</label>
-    <input
-      type="text"
-      id="paciente"
-      name="paciente"
-      [(ngModel)]="consulta.paciente"
-      required
-    />
+    <input type="text" id="paciente" name="paciente" [(ngModel)]="consulta.paciente" list="listaPacientes" required />
+    <datalist id="listaPacientes">
+      <option *ngFor="let paciente of pacientes" [value]="paciente.nome"></option>
+    </datalist>
 
     <label for="profissional">Profissional:</label>
-    <input
-      type="text"
-      id="profissional"
-      name="profissional"
-      [(ngModel)]="consulta.profissional"
-      required
-    />
+    <input type="text" id="profissional" name="profissional" [(ngModel)]="consulta.profissional"
+      list="listaProfissionais" required />
+    <datalist id="listaProfissionais">
+      <option *ngFor="let profissional of profissionais" [value]="profissional.nome"></option>
+    </datalist>
 
     <label for="tipo">Tipo de Consulta:</label>
-    <select
-      id="tipo"
-      name="tipo"
-      [(ngModel)]="consulta.tipo"
-      required
-    >
+    <select id="tipo" name="tipo" [(ngModel)]="consulta.tipo" required>
       <option value="" disabled selected>Selecione o tipo</option>
       <option value="Avaliação">Avaliação</option>
       <option value="Consulta Médica">Consulta Médica</option>
@@ -34,22 +25,10 @@
     </select>
 
     <label for="data">Data:</label>
-    <input
-      type="date"
-      id="data"
-      name="data"
-      [(ngModel)]="consulta.data"
-      required
-    />
+    <input type="date" id="data" name="data" [(ngModel)]="consulta.data" required />
 
     <label for="hora">Hora:</label>
-    <input
-      type="time"
-      id="hora"
-      name="hora"
-      [(ngModel)]="consulta.hora"
-      required
-    />
+    <input type="time" id="hora" name="hora" [(ngModel)]="consulta.hora" required />
 
     <button type="submit" [disabled]="!consultaForm.form.valid">Agendar</button>
   </form>

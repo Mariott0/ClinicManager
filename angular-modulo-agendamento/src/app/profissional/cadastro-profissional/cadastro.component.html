@@ -1,8 +1,8 @@
+
 <div class="container my-4">
     <h2 class="fw-bold mb-2">Cadastro de Profissional</h2>
     <p class="text-muted">Preencha os dados abaixo para cadastrar um novo profissional.</p>
-
-    <form (ngSubmit)="salvar()">
+        <form (ngSubmit)="salvar()">
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="nome" class="form-label">Nome</label>
@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-6">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input type="number" id="telefone" name="telefone" class="form-control"
+                <input type="text" id="telefone" name="telefone" class="form-control"
                     [(ngModel)]="profissional.telefone" placeholder="Digite o telefone" required>
             </div>
         </div>
@@ -29,10 +29,30 @@
             </div>
         </div>
 
-        <div class="mb-4">
-            <label for="especialidade" class="form-label">Especialidade</label>
-            <input type="text" id="especialidade" name="especialidade" class="form-control"
-                [(ngModel)]="profissional.especialidade" placeholder="Digite a especialidade" required>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="especialidade" class="form-label">Especialidade</label>
+                <input type="text" id="especialidade" name="especialidade" class="form-control"
+                    [(ngModel)]="profissional.especialidade" placeholder="Digite a especialidade" required>
+            </div>
+            <div class="col-md-6">
+                <label for="crm_cro" class="form-label">CRM/CRO</label>
+                <input type="text" id="crm_cro" name="crm_cro" class="form-control" [(ngModel)]="profissional.crm_cro"
+                    placeholder="Digite o CRM ou CRO" required>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" [(ngModel)]="profissional.email"
+                    placeholder="Digite o email" required>
+            </div>
+            <div class="col-md-6">
+                <label for="clinica" class="form-label">Clínica</label>
+                <input type="text" id="clinica" name="clinica" class="form-control" [(ngModel)]="profissional.clinica"
+                    placeholder="Digite o nome da clínica" required>
+            </div>
         </div>
 
         <div class="d-flex justify-content-end">
