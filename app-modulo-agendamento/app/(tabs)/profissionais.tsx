@@ -46,7 +46,7 @@ export default function Profissionais() {
         <Button
           mode="contained"
           onPress={() => router.push('/profissional/novo')}
-          buttonColor="#059669" // Tailwind green-600
+          buttonColor="#2563EB" // Tailwind green-600
           textColor="#fff"
           contentStyle={styles.buttonContent}
           labelStyle={styles.buttonLabel}
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#047857', // Tailwind green-700
+    color: '#2563EB', // Tailwind green-700
     textAlign: 'center',
     marginBottom: 20,
   },

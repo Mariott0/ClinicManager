@@ -1,22 +1,28 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { Button, Provider as PaperProvider } from 'react-native-paper';
+import { View, Text, StyleSheet } from 'react-native';
+import { Button, IconButton, Provider as PaperProvider } from 'react-native-paper';
 import { useRouter } from 'expo-router';
 
 export default function Home() {
   const router = useRouter();
 
+  const handleLogout = () => {
+    router.replace('/(auth)/sign-in');
+  };
+
   return (
     <PaperProvider>
       <View style={styles.container}>
-        <View style={styles.content}>
-          {/* Logo fictícia - substitua o caminho caso não tenha */}
-          {/* <Image
-            source={require('../assets/logo.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          /> */}
+        {/* Botão de sair */}
+        <IconButton
+          icon="logout"
+          size={20}
+          iconColor="#DC2626" // vermelho
+          onPress={handleLogout}
+          style={styles.logoutButton}
+        />
 
+        <View style={styles.content}>
           <Text style={styles.title}>
             Clinic<Text style={styles.highlight}>Manager</Text>
           </Text>
@@ -41,7 +47,7 @@ export default function Home() {
             <Button
               mode="outlined"
               onPress={() => router.push('/profissionais')}
-              textColor="#047857"
+              textColor="#2563EB"
               contentStyle={styles.buttonContent}
               labelStyle={styles.buttonLabel}
               style={[styles.button, styles.outlinedButton]}
@@ -59,33 +65,33 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
     paddingHorizontal: 24,
+    paddingTop: 40,
+  },
+  logoutButton: {
+    position: 'absolute',
+    top: 20,
+    left: 10,
+    zIndex: 10,
   },
   content: {
-    width: '100%',
-    maxWidth: 400,
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 24,
-  },
-  logo: {
-    width: 90,
-    height: 90,
-    marginBottom: 10,
   },
   title: {
     fontSize: 36,
     fontWeight: '800',
-    color: '#1D4ED8', // blue-700
+    color: '#1D4ED8',
     textAlign: 'center',
   },
   highlight: {
-    color: '#60A5FA', // blue-400
+    color: '#60A5FA',
   },
   subtitle: {
     fontSize: 14,
-    color: '#6B7280', // gray-500
+    color: '#6B7280',
     textAlign: 'center',
     paddingHorizontal: 12,
     lineHeight: 22,
@@ -100,7 +106,7 @@ const styles = StyleSheet.create({
   },
   outlinedButton: {
     borderWidth: 1.5,
-    borderColor: '#047857',
+    borderColor: '#2563EB',
   },
   buttonContent: {
     paddingVertical: 8,

@@ -7,12 +7,13 @@ export default function RootLayout() {
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
       <Stack
+        initialRouteName="(auth)/sign-in"
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#2563EB', // azul consistente
+            backgroundColor: '#2563EB',
           },
           headerShown: false,
-          headerTintColor: '#fff', // cor do texto/botões no header
+          headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: '600',
             fontSize: 18,
