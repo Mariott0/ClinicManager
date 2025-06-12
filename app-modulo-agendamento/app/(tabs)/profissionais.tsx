@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, Text, TouchableOpacity } from 'react-native';
-import { getProfissionais } from '@/lib/profissional';
+import { View, FlatList, StyleSheet } from 'react-native';
+import { Text, Button, Provider as PaperProvider } from 'react-native-paper';
 import { useRouter } from 'expo-router';
+import { getProfissionais } from '@/lib/profissional';
 import ProfissionalCard from '@/components/ProfissionalCard';
 
 interface Profissional {
@@ -25,26 +26,68 @@ export default function Profissionais() {
   }, []);
 
   return (
-    <View className="flex-1 bg-white px-4 py-2">
-      <FlatList
-        data={profissionais}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <ProfissionalCard
-            profissional={item}
-            onPress={() => router.push(`/profissional/${item.id}`)}
-          />
-        )}
-        ItemSeparatorComponent={() => <View className="h-2" />}
-      />
-      <TouchableOpacity
-        className="mt-6 bg-green-600 rounded-xl py-4 shadow-lg"
-        onPress={() => router.push('/profissional/novo')}
-      >
-        <Text className="text-white text-center text-base font-semibold">
+    <PaperProvider>
+      <View style={styles.container}>
+        <Text style={styles.title}>Lista de Profissionais</Text>
+
+        <FlatList
+          data={profissionais}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <ProfissionalCard
+              profissional={item}
+              onPress={() => router.push(`/profissional/${item.id}`)}
+            />
+          )}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
+          contentContainerStyle={styles.listContent}
+        />
+
+        <Button
+          mode="contained"
+          onPress={() => router.push('/profissional/novo')}
+          buttonColor="#059669" // Tailwind green-600
+          textColor="#fff"
+          contentStyle={styles.buttonContent}
+          labelStyle={styles.buttonLabel}
+          style={styles.button}
+        >
           Novo Profissional
-        </Text>
-      </TouchableOpacity>
-    </View>
+        </Button>
+      </View>
+    </PaperProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingHorizontal: 24,
+    paddingTop: 32,
+    paddingBottom: 16,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#047857', // Tailwind green-700
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  listContent: {
+    paddingBottom: 16,
+  },
+  separator: {
+    height: 12,
+  },
+  button: {
+    borderRadius: 10,
+    marginTop: 24,
+  },
+  buttonContent: {
+    paddingVertical: 10,
+  },
+  buttonLabel: {
+    fontSize: 16,
+  },
+});
