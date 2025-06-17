@@ -23,7 +23,7 @@ export default function PacienteDetalhes() {
   const handleExcluir = () => {
     deletePaciente(id as string).then(() => {
       Alert.alert('Removido', 'Paciente excluído');
-      router.replace('/(tabs)/pacientes');
+      router.replace('./pacientes');
     });
   };
 

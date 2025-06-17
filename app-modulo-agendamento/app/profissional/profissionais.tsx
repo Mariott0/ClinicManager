@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text, Button, Provider as PaperProvider } from 'react-native-paper';
 import { useRouter } from 'expo-router';
 import { getProfissionais } from '@/lib/profissional';
 import ProfissionalCard from '@/components/ProfissionalCard';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 interface Profissional {
   id: string;
@@ -28,6 +29,15 @@ export default function Profissionais() {
   return (
     <PaperProvider>
       <View style={styles.container}>
+        {/* Botão de voltar */}
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => router.push('/page-manager')}
+        >
+          <MaterialIcons name="arrow-back" size={24} color="#2563EB" />
+          <Text style={styles.backButtonText}>Voltar</Text>
+        </TouchableOpacity>
+
         <Text style={styles.title}>Lista de Profissionais</Text>
 
         <FlatList
@@ -46,7 +56,7 @@ export default function Profissionais() {
         <Button
           mode="contained"
           onPress={() => router.push('/profissional/novo')}
-          buttonColor="#2563EB" // Tailwind green-600
+          buttonColor="#2563EB"
           textColor="#fff"
           contentStyle={styles.buttonContent}
           labelStyle={styles.buttonLabel}
@@ -67,10 +77,21 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     paddingBottom: 16,
   },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  backButtonText: {
+    marginLeft: 4,
+    fontSize: 16,
+    color: '#2563EB',
+    fontWeight: '500',
+  },
   title: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#2563EB', // Tailwind green-700
+    color: '#2563EB',
     textAlign: 'center',
     marginBottom: 20,
   },

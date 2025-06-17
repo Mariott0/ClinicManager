@@ -13,15 +13,7 @@ export default function Home() {
   return (
     <PaperProvider>
       <View style={styles.container}>
-        {/* Botão de sair */}
-        <IconButton
-          icon="logout"
-          size={20}
-          iconColor="#DC2626" // vermelho
-          onPress={handleLogout}
-          style={styles.logoutButton}
-        />
-
+        
         <View style={styles.content}>
           <Text style={styles.title}>
             Clinic<Text style={styles.highlight}>Manager</Text>
@@ -34,7 +26,7 @@ export default function Home() {
           <View style={styles.buttons}>
             <Button
               mode="contained"
-              onPress={() => router.push('/pacientes')}
+              onPress={() => router.push('/paciente/pacientes')}
               buttonColor="#2563EB"
               textColor="#fff"
               contentStyle={styles.buttonContent}
@@ -46,7 +38,7 @@ export default function Home() {
 
             <Button
               mode="outlined"
-              onPress={() => router.push('/profissionais')}
+              onPress={() => router.push('/profissional/profissionais')}
               textColor="#2563EB"
               contentStyle={styles.buttonContent}
               labelStyle={styles.buttonLabel}

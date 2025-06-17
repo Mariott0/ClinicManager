@@ -75,7 +75,7 @@ export default function SignUp() {
                         labelStyle={styles.buttonLabel}
                         style={styles.button}
                     >
-                        Cadastrar
+                        Cadastrar-se
                     </Button>
 
                     <Button

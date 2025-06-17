@@ -16,15 +16,18 @@ export default function SignIn() {
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        const USER = 'admin';
-        const PASS = '123';
-
-        if (username === USER && password === PASS) {
+        if (username === 'admin' && password === '123') {
+            router.replace('/page-manager');
+        } else if (username === 'paciente' && password === '123') {
+            router.replace('/page-patient');
+        }
+        else if (username === 'geral' && password === '123') {
             router.replace('/(tabs)');
         } else {
             Alert.alert('Erro', 'Usuário ou senha incorretos');
         }
     };
+
 
     return (
         <PaperProvider>

@@ -23,7 +23,7 @@ export default function ProfissionalDetalhes() {
   const handleExcluir = () => {
     deleteProfissional(id as string).then(() => {
       Alert.alert('Removido', 'Profissional excluído');
-      router.replace('/(tabs)/profissionais');
+      router.replace('./profissionais');
     });
   };
 

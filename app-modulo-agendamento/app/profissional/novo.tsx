@@ -21,7 +21,7 @@ export default function NovoProfissional() {
   const handleCriar = () => {
     createProfissional({ ...profissional, idade: Number(profissional.idade) }).then(() => {
       Alert.alert('Criado', 'Profissional cadastrado com sucesso');
-      router.replace('/(tabs)/profissionais');
+      router.replace('./profissionais');
     });
   };
 

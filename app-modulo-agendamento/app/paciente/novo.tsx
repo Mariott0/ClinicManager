@@ -19,7 +19,7 @@ export default function NovoPaciente() {
   const handleCriar = () => {
     createPaciente({ ...paciente, idade: Number(paciente.idade) }).then(() => {
       Alert.alert('Criado', 'Paciente cadastrado com sucesso');
-      router.replace('/(tabs)/pacientes');
+      router.replace('./pacientes');
     });
   };
 
