@@ -1,7 +1,8 @@
-// PatientHomeScreen.tsx
+
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, Dimensions } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useRouter } from 'expo-router';
 
 interface PatientHomeScreenProps {
   patientName: string;
@@ -11,7 +12,7 @@ interface PatientHomeScreenProps {
     clinicLocation: string;
   } | null;
 }
-
+const router = useRouter();
 const PatientHomeScreen: React.FC<PatientHomeScreenProps> = ({
   patientName,
   nextAppointment,
@@ -25,7 +26,7 @@ const PatientHomeScreen: React.FC<PatientHomeScreenProps> = ({
           <Text style={styles.patientName}>Nathan Mariotto</Text>
         </View>
         <Image
-          source={{ uri: 'https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6565025b-409e-4809-80ba-92b62aeb0683.png' }}
+          source={{ uri: 'https://media.licdn.com/dms/image/v2/D4D03AQE7KqMGaIzs3Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706069495541?e=1755734400&v=beta&t=L-82aPIt_WtAl7TWRyQaAgS0hZcQWkggGEjYOc5bqSA' }}
           accessible
           accessibilityLabel="Imagem do perfil do paciente"
           style={styles.avatar}
@@ -62,24 +63,60 @@ const PatientHomeScreen: React.FC<PatientHomeScreenProps> = ({
       <View style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>Ações rápidas</Text>
         <View style={styles.actionsGrid}>
-          <TouchableOpacity style={styles.actionButton} accessible accessibilityRole="button" accessibilityLabel="Agendar uma nova consulta">
+          <TouchableOpacity
+            style={styles.actionButton}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Agendar uma nova consulta"
+            onPress={() => router.push('/agendar')}
+          >
             <MaterialIcons name="add-circle-outline" size={36} color="#2563EB" />
             <Text style={styles.actionText}>Agendar</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionButton} accessible accessibilityRole="button" accessibilityLabel="Ver seus prontuários e histórico">
+          <TouchableOpacity
+            style={styles.actionButton}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Ver seus prontuários e histórico"
+            onPress={() => router.push('/prontuarios')}
+          >
             <MaterialIcons name="folder-open" size={36} color="#2563EB" />
             <Text style={styles.actionText}>Prontuários</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionButton} accessible accessibilityRole="button" accessibilityLabel="Ver dicas de saúde bucal">
+          <TouchableOpacity
+            style={styles.actionButton}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Ver dicas de saúde bucal"
+            onPress={() => router.push('/dicas')}
+          >
             <MaterialIcons name="lightbulb-outline" size={36} color="#2563EB" />
             <Text style={styles.actionText}>Dicas</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionButton} accessible accessibilityRole="button" accessibilityLabel="Entrar em contato com seu dentista">
+          <TouchableOpacity
+            style={styles.actionButton}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Entrar em contato com seu dentista"
+            onPress={() => router.push('/contato')}
+          >
             <MaterialIcons name="chat-bubble-outline" size={36} color="#2563EB" />
             <Text style={styles.actionText}>Contato</Text>
+          </TouchableOpacity>
+
+          {/* NOVO botão Configurações */}
+          <TouchableOpacity
+            style={styles.actionButton}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel="Ir para Configurações"
+            onPress={() => router.push('/configuracao-patient')}
+          >
+            <MaterialIcons name="settings" size={36} color="#2563EB" />
+            <Text style={styles.actionText}>Configurações</Text>
           </TouchableOpacity>
         </View>
       </View>
