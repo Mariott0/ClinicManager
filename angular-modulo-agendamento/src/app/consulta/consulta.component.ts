@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // <- IMPORTANTE!
 import { ProfissionalService } from '../profissional/profissional.service';
 import { PacientesService } from '../paciente/pacientes.service';
 import { Profissional } from '../profissional/profissional.model';
@@ -9,17 +9,19 @@ import { Paciente } from '../paciente/paciente.model';
 
 @Component({
   selector: 'app-consulta',
+  standalone: true,
+  imports: [CommonModule, FormsModule], // <- ESSA LINHA RESOLVE OS ERROS
   templateUrl: './consulta.component.html',
-  imports: [CommonModule, FormsModule],
   styleUrls: ['./consulta.component.css']
 })
 export class ConsultaComponent implements OnInit {
   consulta = {
-    paciente: '',
-    profissional: '',
-    tipo: '',
+    id: '',
+    pacienteId: '',
+    profissionalId: '',
     data: '',
-    hora: ''
+    hora: '',
+    observacao: ''
   };
 
   mensagem: string = '';
@@ -38,17 +40,56 @@ export class ConsultaComponent implements OnInit {
   }
 
   agendarConsulta() {
-    this.mensagem = `Consulta agendada para ${this.consulta.paciente} com ${this.consulta.profissional} no dia ${this.consulta.data} às ${this.consulta.hora}.`;
-
-    alert('Sua consulta foi agendada com sucesso!');
-    this.router.navigate(['/home']);
-
-    this.consulta = {
-      paciente: '',
-      profissional: '',
-      tipo: '',
-      data: '',
-      hora: ''
+    const body = {
+      data: this.consulta.data,
+      hora: this.consulta.hora,
+      observacao: this.consulta.observacao,
+      pacienteId: this.consulta.pacienteId,
+      profissionalId: this.consulta.profissionalId
     };
+
+    fetch('http://localhost:3000/consulta', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Erro ao agendar consulta');
+        return res.json();
+      })
+      .then(() => {
+        alert('Consulta agendada com sucesso!');
+        this.router.navigate(['/home']);
+      })
+      .catch(() => alert('Erro ao agendar consulta'));
+  }
+
+  editarConsulta() {
+    const body = {
+      data: this.consulta.data,
+      hora: this.consulta.hora,
+      observacao: this.consulta.observacao,
+      pacienteId: this.consulta.pacienteId,
+      profissionalId: this.consulta.profissionalId
+    };
+
+    fetch(`http://localhost:3000/consulta/${this.consulta.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Erro ao editar consulta');
+        return res.json();
+      })
+      .then(() => {
+        alert('Consulta atualizada com sucesso!');
+        this.router.navigate(['/home']);
+      })
+      .catch(() => alert('Erro ao editar consulta'));
+  }
+
+  voltarHome() {
+    this.router.navigate(['/home']);
   }
 }

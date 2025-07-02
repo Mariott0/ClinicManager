@@ -1,51 +1,61 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-11">
-      <div class="card shadow-lg border-0">
-        <div class="card-body">
-          <h1 class="text-center mb-4">Lista de Pacientes</h1>
+<div class="listagem-container">
+  <header class="listagem-header">
+    <div>
+      <h2 class="titulo">Pacientes Cadastrados</h2>
+      <p class="subtexto">Gerencie seus pacientes cadastrados com facilidade.</p>
+      <button class="btn voltar" routerLink="/home">
+        <i class="fas fa-arrow-left"></i> Voltar
+      </button>
+    </div>
+    <button class="btn novo" routerLink="/cadastroPaciente">
+      <i class="fas fa-user-plus"></i> Novo Cadastro
+    </button>
+  </header>
 
-          <div class="text-end mb-3">
-            <a routerLink="/cadastroPaciente" class="btn btn-outline-info">Novo Cadastro</a>
-          </div>
-          <a class="btn btn-success px-4 py-2 mt-2 mt-md-0" routerLink="/home">
-            Voltar
-          </a>
+  <!-- Tabela para desktop -->
+  <div class="tabela-desktop">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+          <th>Convênio</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paciente of pacientes">
+          <td>{{ paciente.nome }}</td>
+          <td>{{ paciente.idade }}</td>
+          <td>{{ paciente.cpf }}</td>
+          <td>{{ paciente.telefone }}</td>
+          <td>{{ paciente.endereco }}</td>
+          <td>{{ paciente.convenio }}</td>
+          <td>
+            <button class="btn editar" [routerLink]="['/edicaoPaciente', paciente.id]">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-          <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Idade</th>
-                  <th>CPF</th>
-                  <th>Telefone</th>
-                  <th>Endereço</th>
-                  <th>Convênio</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let paciente of pacientes">
-                  <td>{{ paciente.nome }}</td>
-                  <td>{{ paciente.idade }}</td>
-                  <td>{{ paciente.cpf }}</td>
-                  <td>{{ paciente.telefone }}</td>
-                  <td>{{ paciente.endereco }}</td>
-                  <td>{{ paciente.convenio }}</td>
-                  <td>
-                    <a [routerLink]="['/edicaoPaciente', paciente.id]" class="btn btn-outline-warning btn-sm">
-                      Editar
-                    </a>
-
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-      </div>
+  <!-- Cards para mobile -->
+  <div class="cards-mobile">
+    <div *ngFor="let paciente of pacientes" class="card">
+      <h3>{{ paciente.nome }}</h3>
+      <p><strong>Idade:</strong> {{ paciente.idade }}</p>
+      <p><strong>CPF:</strong> {{ paciente.cpf }}</p>
+      <p><strong>Telefone:</strong> {{ paciente.telefone }}</p>
+      <p><strong>Endereço:</strong> {{ paciente.endereco }}</p>
+      <p><strong>Convênio:</strong> {{ paciente.convenio }}</p>
+      <button class="btn editar" [routerLink]="['/edicaoPaciente', paciente.id]">
+        <i class="fas fa-edit"></i> Editar
+      </button>
     </div>
   </div>
 </div>

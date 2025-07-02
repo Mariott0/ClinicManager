@@ -8,7 +8,9 @@ import { Profissional } from './profissional.model';
 })
 export class ProfissionalService {
 
-  private apiURL = 'http://localhost:3000/profissional';
+  /*private apiURL = 'https://backend-project-clinicmanager-production.up.railway.app/profissional';*/  
+  private apiURL = 'http://localhost:3000/profissional'; // URL do backend local
+
 
   constructor(private http: HttpClient) { }
   listarProfissionais(): Observable<Profissional[]> {

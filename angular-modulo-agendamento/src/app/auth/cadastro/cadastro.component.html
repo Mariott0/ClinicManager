@@ -1,0 +1,17 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>ClinicManager - Cadastro</h2>
+
+        <form (submit)="cadastrar(); $event.preventDefault()">
+            <input type="text" placeholder="Usuário" [(ngModel)]="username" name="username" required />
+            <input type="password" placeholder="Senha" [(ngModel)]="password" name="password" required />
+
+            <button type="submit">Cadastrar</button>
+
+            <span class="link">
+                Já tem conta?
+                <a routerLink="/login">Voltar ao login</a>
+            </span>
+        </form>
+    </div>
+</div>

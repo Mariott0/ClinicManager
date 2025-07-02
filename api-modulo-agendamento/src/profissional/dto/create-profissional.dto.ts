@@ -2,7 +2,7 @@ import { IsInt, IsString, IsEmail } from 'class-validator';
 
 export class CreateProfissionalDto {
   @IsString()
-  id: string;
+  profissionalId: string;
 
   @IsString()
   nome: string;

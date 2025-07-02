@@ -1,0 +1,122 @@
+.listagem-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.listagem-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .listagem-header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.titulo {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #007bff;
+}
+
+.subtexto {
+  color: #6c757d;
+  margin: 0.25rem 0 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn.voltar {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn.novo {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn.editar {
+  background-color: #007bff;
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.btn:hover {
+  filter: brightness(0.9);
+}
+
+.tabela-desktop {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.tabela-desktop table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.tabela-desktop th,
+.tabela-desktop td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  text-align: left;
+}
+
+.tabela-desktop thead th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.cards-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .tabela-desktop {
+    display: none;
+  }
+
+  .cards-mobile {
+    display: block;
+  }
+
+  .cards-mobile .card {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .cards-mobile h3 {
+    margin-top: 0;
+    color: #007bff;
+  }
+
+  .cards-mobile p {
+    margin: 0.25rem 0;
+  }
+}

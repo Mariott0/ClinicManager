@@ -68,6 +68,35 @@
   margin-bottom: 2rem;
 }
 
+/* Dashboard */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.dashboard-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.dashboard-card h3 {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-card .value {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Cards */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -99,6 +128,47 @@
   font-size: 1.2rem;
 }
 
+/* Agenda */
+.agenda {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.agenda h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+
+.consulta-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.consulta-lista li {
+  background-color: #fff;
+  margin-bottom: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Gráfico */
+.grafico {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+.grafico h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+
 /* Rodapé */
 .footer {
   background-color: #f1f1f1;
@@ -106,4 +176,88 @@
   padding: 1rem;
   font-size: 0.875rem;
   color: #777;
+}
+.grafico {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+.grafico h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+.logout-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: white;
+  background-color: #dc3545; /* vermelho */
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.logout-button i {
+  font-size: 1.1rem;
+}
+.calendario {
+  margin-top: 2rem;
+}
+
+.calendario h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.calendario ::ng-deep .fc {
+  max-width: 100%;
+  margin: 0 auto;
+}
+/* Melhorando acessibilidade visual e contraste */
+.dashboard-card h3,
+.card h2 {
+  color: #2c3e50;
+}
+
+/* Valor destacado mais visível */
+.dashboard-card .value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e90ff;
+}
+
+/* Card hover com mais elegância */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* Adicionando responsividade com melhor espaçamento */
+.dashboard {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* Aumentando padding e melhorando o espaçamento */
+.card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Cabeçalho mais elegante */
+.header {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }

@@ -6,9 +6,10 @@ import { Paciente } from './paciente.model';
   providedIn: 'root',
 })
 export class PacientesService {
-  private apiURL = 'http://localhost:3000/paciente';
+  /*private apiURL = 'https://backend-project-clinicmanager-production.up.railway.app/paciente';*/
+  private apiURL = 'http://localhost:3000/paciente'; // URL do backend local
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   listarPacientes(): Observable<Paciente[]> {
     return this.http.get<Paciente[]>(this.apiURL);

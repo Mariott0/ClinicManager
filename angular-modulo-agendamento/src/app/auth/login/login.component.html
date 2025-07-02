@@ -1,0 +1,18 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>ClinicManager</h2>
+
+        <form (submit)="login(); $event.preventDefault()">
+            <input type="text" placeholder="Usuário" [(ngModel)]="username" name="username" required />
+            <input type="password" placeholder="Senha" [(ngModel)]="password" name="password" required />
+
+            <button type="submit">Entrar</button>
+            <p *ngIf="error" class="error">{{ error }}</p>
+
+            <span class="link">
+                Não tem conta?
+                <a routerLink="cadastro">Cadastre-se</a>
+            </span>
+        </form>
+    </div>
+</div>l

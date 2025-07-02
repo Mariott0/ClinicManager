@@ -6,33 +6,85 @@
                 <li *ngFor="let item of menuItems" (click)="router.navigate([item.route])">
                     <span class="label">{{ item.label }}</span>
                 </li>
+                <li class="logout-button" (click)="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="label">Sair</span>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main class="main-content">
-        <h1>Bem-vindo à Clínica</h1>
-        <p>Gerencie seus pacientes, profissionais e consultas com facilidade.</p>
+        <h1>Bem-vindo(a), Dr. Nathan Mariotto!</h1>
+        <p>Visão geral da sua clínica hoje.</p>
 
+        <!-- Dashboard Resumo -->
+        <section class="dashboard">
+            <div class="dashboard-card">
+                <h3><i class="fas fa-users"></i> Pacientes Ativos</h3>
+                <p class="value">{{ pacientesAtivos }}</p>
+            </div>
+            <div class="dashboard-card">
+                <h3><i class="fas fa-user-md"></i> Profissionais Ativos</h3>
+                <p class="value">{{ profissionaisAtivos }}</p>
+            </div>
+            <div class="dashboard-card">
+                <h3><i class="fas fa-calendar-day"></i> Consultas Hoje</h3>
+                <p class="value">{{ consultasHoje }}</p>
+            </div>
+            <div class="dashboard-card">
+                <h3><i class="fas fa-dollar-sign"></i> Faturamento Estimado</h3>
+                <p class="value">R$ 54.651,00</p>
+            </div>
+            <div class="dashboard-card">
+                <h3><i class="fas fa-bell"></i> Alertas</h3>
+                <p class="value">{{ consultasHoje > 10 ? 'Alta demanda' : 'OK' }}</p>
+            </div>
+        </section>
+
+        <!-- Ações principais -->
         <div class="cards">
             <div class="card" (click)="irParaPacientes()">
-                <div class="card-icon">👥</div>
+                <div class="card-icon"><i class="fas fa-users"></i></div>
                 <h2>Pacientes</h2>
                 <p>Visualize e gerencie seus pacientes.</p>
             </div>
 
             <div class="card" (click)="irParaProfissionais()">
-                <div class="card-icon">🩺</div>
+                <div class="card-icon"><i class="fas fa-user-md"></i></div>
                 <h2>Profissionais</h2>
                 <p>Cadastre e acompanhe seus profissionais.</p>
             </div>
 
             <div class="card" (click)="irParaConsultas()">
-                <div class="card-icon">📅</div>
+                <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
                 <h2>Agendar Consulta</h2>
                 <p>Agende uma nova consulta com facilidade.</p>
             </div>
         </div>
+
+        <!-- Próximas Consultas -->
+        <section class="agenda">
+            <h2>Próximas Consultas</h2>
+            <ul class="consulta-lista">
+                <li *ngFor="let consulta of proximasConsultas">
+                    <strong>{{ consulta.hora }}</strong> - {{ consulta.paciente?.nome }} ({{ consulta.profissional?.nome
+                    }})
+                </li>
+            </ul>
+        </section>
+
+        <!-- Calendário com FullCalendar -->
+        <section class="calendario">
+            <h2>Calendário de Consultas</h2>
+            <full-calendar [options]="calendarOptions"></full-calendar>
+        </section>
+
+        <!-- Gráfico de Consultas da Semana -->
+        <section class="grafico">
+            <h2>Consultas da Semana</h2>
+            <canvas id="graficoConsultas" height="100"></canvas>
+        </section>
     </main>
 
     <footer class="footer">

@@ -1,98 +1,68 @@
-<div class="container my-4">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
-        <div>
-            <h2 class="fw-bold mb-2">Profissionais Cadastrados</h2>
-            <p class="text-muted">Gerencie seus profissionais cadastrados com facilidade.</p>
-            <a class="btn btn-success px-4 py-2 mt-2 mt-md-0" routerLink="/home">
-                Voltar
-            </a>
-        </div>
-        <a class="btn btn-success px-4 py-2 mt-2 mt-md-0" routerLink="/cadastroProfissional">
-            <i class="bi bi-person-plus me-2"></i>Novo Cadastro
-        </a>
+<div class="listagem-container">
+  <header class="listagem-header">
+    <div>
+      <h2>Profissionais Cadastrados</h2>
+      <p class="subtexto">Gerencie seus profissionais cadastrados com facilidade.</p>
+      <button class="btn voltar" routerLink="/home">Voltar</button>
     </div>
-    <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Buscar por nome" [(ngModel)]="termoBusca" />
-    </div>
-    <div class="d-none d-md-block">
-        <div class="table-responsive">
-            <table class="table table-hover align-middle">
-                <thead class="table-light">
-                    <tr>
-                        <th (click)="ordenarPor('nome')" style="cursor:pointer">
-                            Nome <i [class]="iconeOrdenacao('nome')"></i>
-                        </th>
-                        <th (click)="ordenarPor('idade')" style="cursor:pointer">
-                            Idade <i [class]="iconeOrdenacao('idade')"></i>
-                        </th>
-                        <th>
-                            Telefone <i></i>
-                        </th>
-                        <th (click)="ordenarPor('especialidade')" style="cursor:pointer">
-                            Especialidade <i [class]="iconeOrdenacao('especialidade')"></i>
-                        </th>
-                        <th>
-                            Endereço <i></i>
-                        </th>
-                        <th>
-                            E-mail <i></i>
-                        </th>
-                        <th>
-                            CRM/CRO <i></i>
-                        </th>
-                        <th>
-                            Clinica <i></i>
-                        </th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let profissional of profissionaisFiltrados">
+    <button class="btn novo" routerLink="/cadastroProfissional">
+      <i class="fas fa-user-plus"></i> Novo Cadastro
+    </button>
+  </header>
 
-                        <!-- <td>{{ profissional.id }}</td> -->
-                        <td>{{ profissional.nome }}</td>
-                        <td>{{ profissional.idade }}</td>
-                        <td>{{ profissional.telefone }}</td>
-                        <td>{{ profissional.especialidade }}</td>
-                        <td>{{ profissional.endereco }}</td>
-                        <td>{{ profissional.email }}</td>
-                        <td>{{ profissional.crm_cro }}</td>
-                        <td>{{ profissional.clinica }}</td>
-                        <td>
-                            <a class="btn btn-outline-primary btn-sm"
-                                [routerLink]="['/edicaoProfissional', profissional.id]">
-                                <i class="bi bi-pencil"></i> Editar
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+  <div class="busca">
+    <input type="text" [(ngModel)]="termoBusca" placeholder="Buscar por nome" />
+  </div>
 
-    <!-- Cards responsivos para mobile -->
-    <div class="d-block d-md-none">
-        <div class="row g-3">
-            <div class="col-12" *ngFor="let profissional of profissionaisFiltrados">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-semibold">{{ profissional.nome }}</h5>
-                        <p class="mb-1"><strong>ID:</strong> {{ profissional.id }}</p>
-                        <p class="mb-1"><strong>Idade:</strong> {{ profissional.idade }}</p>
-                        <p class="mb-1"><strong>Telefone:</strong> {{ profissional.telefone }}</p>
-                        <p class="mb-1"><strong>Email:</strong> {{ profissional.email }}</p>
-                        <p class="mb-1"><strong>Especialidade:</strong> {{ profissional.especialidade }}</p>
-                        <p class="mb-1"><strong>CRM/CRO:</strong> {{ profissional.crm_cro }}</p>
-                        <p class="mb-1"><strong>Clínica:</strong> {{ profissional.clinica }}</p>
-                        <p class="mb-3"><strong>Endereço:</strong> {{ profissional.endereco }}</p>
+  <div class="tabela-desktop">
+    <table>
+      <thead>
+        <tr>
+          <th (click)="ordenarPor('nome')">Nome <i [class]="iconeOrdenacao('nome')"></i></th>
+          <th (click)="ordenarPor('idade')">Idade <i [class]="iconeOrdenacao('idade')"></i></th>
+          <th>Telefone</th>
+          <th (click)="ordenarPor('especialidade')">Especialidade <i [class]="iconeOrdenacao('especialidade')"></i></th>
+          <th>Endereço</th>
+          <th>E-mail</th>
+          <th>CRM/CRO</th>
+          <th>Clínica</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profissional of profissionaisFiltrados">
+          <td>{{ profissional.nome }}</td>
+          <td>{{ profissional.idade }}</td>
+          <td>{{ profissional.telefone }}</td>
+          <td>{{ profissional.especialidade }}</td>
+          <td>{{ profissional.endereco }}</td>
+          <td>{{ profissional.email }}</td>
+          <td>{{ profissional.crm_cro }}</td>
+          <td>{{ profissional.clinica }}</td>
+          <td>
+            <button class="btn editar" [routerLink]="['/edicaoProfissional', profissional.id]">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-                        <a class="btn btn-sm btn-outline-primary w-100"
-                            [routerLink]="['/edicaoProfissional', profissional.id]">
-                            <i class="bi bi-pencil"></i> Editar
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Mobile -->
+  <div class="cards-mobile">
+    <div *ngFor="let profissional of profissionaisFiltrados" class="card">
+      <h3>{{ profissional.nome }}</h3>
+      <p><strong>Idade:</strong> {{ profissional.idade }}</p>
+      <p><strong>Telefone:</strong> {{ profissional.telefone }}</p>
+      <p><strong>Email:</strong> {{ profissional.email }}</p>
+      <p><strong>Especialidade:</strong> {{ profissional.especialidade }}</p>
+      <p><strong>CRM/CRO:</strong> {{ profissional.crm_cro }}</p>
+      <p><strong>Clínica:</strong> {{ profissional.clinica }}</p>
+      <p><strong>Endereço:</strong> {{ profissional.endereco }}</p>
+      <button class="btn editar" [routerLink]="['/edicaoProfissional', profissional.id]">
+        <i class="fas fa-edit"></i> Editar
+      </button>
     </div>
+  </div>
 </div>

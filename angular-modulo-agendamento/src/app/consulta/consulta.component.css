@@ -61,3 +61,22 @@ button:hover:not(:disabled) {
   color: green;
   font-weight: 500;
 }
+
+textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+  resize: vertical;
+  min-height: 80px;
+}
+
+button.cancelar {
+  background-color: #dc3545;
+}
+
+button.cancelar:hover {
+  background-color: #c82333;
+}

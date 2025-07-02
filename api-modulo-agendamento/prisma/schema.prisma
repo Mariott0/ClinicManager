@@ -16,6 +16,7 @@ model Paciente {
   endereco  String
   telefone  String
   convenio  String
+  consultas Consulta[]
 
   @@map("pacientes")
 }
@@ -30,6 +31,23 @@ model Profissional {
   email         String
   endereco      String
   clinica       String
+  consultas Consulta[]
+
 
   @@map("profissionais")
+}
+
+model Consulta {
+  id             String       @id @default(uuid())
+  data           DateTime
+  hora           String
+  observacao     String
+
+  pacienteId     String
+  profissionalId String
+
+  paciente       Paciente     @relation(fields: [pacienteId], references: [id])
+  profissional   Profissional @relation(fields: [profissionalId], references: [id])
+
+  @@map("consultas")
 }

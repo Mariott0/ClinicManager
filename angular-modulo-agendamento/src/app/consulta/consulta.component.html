@@ -1,27 +1,21 @@
 <div class="consulta-container">
-  <h2>Agendar Consulta</h2>
-  
+  <h2>{{ consulta.id ? 'Editar Consulta' : 'Agendar Consulta' }}</h2>
 
-  <form (ngSubmit)="agendarConsulta()" #consultaForm="ngForm">
+  <form (ngSubmit)="consulta.id ? editarConsulta() : agendarConsulta()" #consultaForm="ngForm">
     <label for="paciente">Paciente:</label>
-    <input type="text" id="paciente" name="paciente" [(ngModel)]="consulta.paciente" list="listaPacientes" required />
-    <datalist id="listaPacientes">
-      <option *ngFor="let paciente of pacientes" [value]="paciente.nome"></option>
-    </datalist>
+    <select id="paciente" name="paciente" [(ngModel)]="consulta.pacienteId" required>
+      <option value="" disabled selected>Selecione um paciente</option>
+      <option *ngFor="let paciente of pacientes" [value]="paciente.id">
+        {{ paciente.nome }}
+      </option>
+    </select>
 
     <label for="profissional">Profissional:</label>
-    <input type="text" id="profissional" name="profissional" [(ngModel)]="consulta.profissional"
-      list="listaProfissionais" required />
-    <datalist id="listaProfissionais">
-      <option *ngFor="let profissional of profissionais" [value]="profissional.nome"></option>
-    </datalist>
-
-    <label for="tipo">Tipo de Consulta:</label>
-    <select id="tipo" name="tipo" [(ngModel)]="consulta.tipo" required>
-      <option value="" disabled selected>Selecione o tipo</option>
-      <option value="Avaliação">Avaliação</option>
-      <option value="Consulta Médica">Consulta Médica</option>
-      <option value="Consulta Odontológica">Consulta Odontológica</option>
+    <select id="profissional" name="profissional" [(ngModel)]="consulta.profissionalId" required>
+      <option value="" disabled selected>Selecione um profissional</option>
+      <option *ngFor="let profissional of profissionais" [value]="profissional.id">
+        {{ profissional.nome }}
+      </option>
     </select>
 
     <label for="data">Data:</label>
@@ -30,7 +24,18 @@
     <label for="hora">Hora:</label>
     <input type="time" id="hora" name="hora" [(ngModel)]="consulta.hora" required />
 
-    <button type="submit" [disabled]="!consultaForm.form.valid">Agendar</button>
+    <label for="observacao">Observações:</label>
+    <textarea id="observacao" name="observacao" [(ngModel)]="consulta.observacao" rows="3"
+      placeholder="Ex: paciente com dor de cabeça..."></textarea>
+
+    <button type="submit" [disabled]="!consultaForm.form.valid">
+      {{ consulta.id ? 'Salvar Alterações' : 'Agendar' }}
+    </button>
+
+    <button type="button" (click)="voltarHome()" class="cancelar">
+      Cancelar / Voltar
+    </button>
+
   </form>
 
   <div *ngIf="mensagem" class="mensagem">
